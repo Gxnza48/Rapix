@@ -1,12 +1,13 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { ArrowRight, Play } from "lucide-react"
+import { ArrowRight, Play, Zap, TrendingUp, ShieldCheck } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import { gsap } from "gsap"
+import { HighlightText } from "./highlight-text"
 
 export default function Hero() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const heroRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -32,10 +33,22 @@ export default function Hero() {
           { scale: 1, opacity: 1, duration: 1, ease: "power3.out" },
           "-=0.8",
         )
+        .fromTo(
+          ".status-chip",
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
+          "-=0.5",
+        )
     }, heroRef)
 
     return () => ctx.revert()
   }, [])
+
+  const statusChips = [
+    { icon: Zap, text: t("hero.chip-fast") },
+    { icon: TrendingUp, text: t("hero.chip-growth") },
+    { icon: ShieldCheck, text: t("hero.chip-secure") },
+  ]
 
   return (
     <section ref={heroRef} className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
@@ -60,10 +73,18 @@ export default function Hero() {
           {/* Content - Now appears below visual on mobile */}
           <div className="space-y-8 text-center lg:text-left">
             <h1 className="hero-title text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight">
-              {t("hero.headline")}
+              <HighlightText
+                text={t("hero.headline")}
+                keywords={language === "es" ? ["rápidas"] : ["motion"]}
+                className="italic gradient-text-grey"
+              />
             </h1>
             <p className="hero-subtitle text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              {t("hero.subtitle")}
+              <HighlightText
+                text={t("hero.subtitle")}
+                keywords={language === "es" ? ["alta velocidad"] : ["high-speed"]}
+                className="italic gradient-text-grey"
+              />
             </p>
             <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button className="group bg-black text-white px-8 py-4 rounded-full font-semibold flex items-center justify-center space-x-2 hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
@@ -74,6 +95,18 @@ export default function Hero() {
                 <Play className="w-5 h-5" />
                 <span>{t("hero.learn-more")}</span>
               </button>
+            </div>
+            {/* Status Modern Chips */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 pt-4">
+              {statusChips.map((chip, index) => (
+                <div
+                  key={index}
+                  className="status-chip flex items-center gap-2 bg-green-50 text-green-800 text-sm px-4 py-2 rounded-full shadow-sm"
+                >
+                  <chip.icon className="w-4 h-4" />
+                  <span>{chip.text}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

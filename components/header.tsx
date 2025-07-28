@@ -1,20 +1,55 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Menu, X, Globe } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { language, setLanguage, t } = useLanguage()
+  const headerRef = useRef<HTMLElement>(null) // Ref for the header element
 
   useEffect(() => {
-    gsap.fromTo(
-      ".header-item",
-      { y: -20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
-    )
+    const ctx = gsap.context(() => {
+      // Initial animation for header items
+      gsap.fromTo(
+        ".header-item",
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
+      )
+
+      // Use matchMedia for responsive ScrollTrigger
+      const mm = gsap.matchMedia()
+
+      mm.add("(min-width: 768px)", () => {
+        // Apply only for desktop (md breakpoint and above)
+        gsap.to(headerRef.current, {
+          yPercent: -100, // Hide by moving up 100% of its height
+          ease: "power2.in",
+          scrollTrigger: {
+            trigger: document.documentElement, // Trigger on the whole document scroll
+            start: "top top", // Start when the top of the viewport hits the top of the document
+            end: "bottom top", // End when the bottom of the viewport hits the top of the document
+            scrub: true, // Link animation to scroll position
+            onUpdate: (self) => {
+              if (self.direction === 1) {
+                // Scrolling down
+                gsap.to(headerRef.current, { yPercent: -100, duration: 0.3, ease: "power2.in" })
+              } else {
+                // Scrolling up
+                gsap.to(headerRef.current, { yPercent: 0, duration: 0.3, ease: "power2.out" })
+              }
+            },
+          },
+        })
+      })
+    }, headerRef) // Pass headerRef to gsap.context
+
+    return () => ctx.revert() // Clean up all animations created in this context
   }, [])
 
   const toggleLanguage = () => {
@@ -22,7 +57,10 @@ export default function Header() {
   }
 
   return (
-    <header className="floating-nav fixed top-4 left-4 right-4 z-50 bg-white/80 backdrop-blur-xl border border-black/10 rounded-2xl shadow-lg">
+    <header
+      ref={headerRef}
+      className="floating-nav fixed top-4 left-4 right-4 z-50 bg-white/80 backdrop-blur-xl border border-black/10 rounded-2xl shadow-lg"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -30,7 +68,7 @@ export default function Header() {
             <img
               src="https://i.ibb.co/hrMJFwL/d4fec341-4851-4613-b384-b6c4400f5cbe-removalai-preview.png"
               alt="RapiX Logo"
-              className="logo-glow h-12 sm:h-14 w-auto" /* Increased logo size */
+              className="logo-glow h-12 sm:h-14 w-auto"
             />
           </div>
 

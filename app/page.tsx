@@ -8,36 +8,33 @@ import Services from "@/components/services"
 import About from "@/components/about"
 import Founders from "@/components/founders"
 import Contact from "@/components/contact"
+import Pricing from "@/components/pricing"
+import FAQ from "@/components/faq"
 import CTA from "@/components/cta"
 import Footer from "@/components/footer"
 import { initLenis } from "@/lib/lenis"
 import ScrollEffects from "@/components/scroll-effects"
+import GoToTop from "@/components/go-to-top"
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    // Function to check if it's a mobile device
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768) // Tailwind's 'md' breakpoint
+      setIsMobile(window.innerWidth < 768)
     }
 
-    // Initial check
     checkMobile()
-
-    // Add event listener for window resize
     window.addEventListener("resize", checkMobile)
 
-    // Initialize Lenis only on mobile
     if (isMobile) {
       initLenis()
     }
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("resize", checkMobile)
     }
-  }, [isMobile]) // Re-run effect if isMobile changes
+  }, [isMobile])
 
   return (
     <LanguageProvider>
@@ -49,9 +46,9 @@ export default function Home() {
             className="absolute inset-0 opacity-[0.03]"
             style={{
               backgroundImage: `
-        linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
-      `,
+      linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
+    `,
               backgroundSize: "50px 50px",
             }}
           />
@@ -61,9 +58,9 @@ export default function Home() {
             className="absolute inset-0 opacity-[0.02]"
             style={{
               backgroundImage: `
-        linear-gradient(rgba(0,0,0,0.2) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.2) 1px, transparent 1px)
-      `,
+      linear-gradient(rgba(0,0,0,0.2) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.2) 1px, transparent 1px)
+    `,
               backgroundSize: "200px 200px",
             }}
           />
@@ -110,17 +107,20 @@ export default function Home() {
             ))}
           </div>
         </div>
-        {isMobile && <ScrollEffects />} {/* Conditionally render ScrollEffects */}
+        {isMobile && <ScrollEffects />}
         <Header />
         <main>
           <Hero />
           <Services />
           <About />
           <Founders />
-          <Contact />
+          <Pricing /> {/* Moved Pricing here */}
+          <FAQ /> {/* Moved FAQ here */}
+          <Contact /> {/* Moved Contact here */}
           <CTA />
         </main>
         <Footer />
+        <GoToTop />
       </div>
     </LanguageProvider>
   )

@@ -15,7 +15,7 @@ export default function Footer() {
             <img
               src="https://i.ibb.co/hrMJFwL/d4fec341-4851-4613-b384-b6c4400f5cbe-removalai-preview.png"
               alt="RapiX Logo"
-              className="h-8 sm:h-10 w-auto mb-3 sm:mb-4 filter invert mx-auto md:mx-0"
+              className="h-8 sm:h-20 w-auto mb-3 sm:mb-4 filter invert mx-auto md:mx-0"
             />
             <p className="text-gray-400 leading-relaxed text-sm sm:text-base max-w-md mx-auto md:mx-0">
               {t("footer.description")}

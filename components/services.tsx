@@ -1,21 +1,23 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Rocket, Search, DollarSign } from "lucide-react" // Updated icons
+import { Rocket, Search, DollarSign } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import WaveDivider from "@/components/wave-divider"
+import { HighlightText } from "./highlight-text" // Import HighlightText
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Services() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        ".service-item",
+        ".service-card",
         { y: 50, opacity: 0 },
         {
           y: 0,
@@ -68,43 +70,40 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" ref={sectionRef} className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+    <section id="services" ref={sectionRef} className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 sm:mb-20">
           <h2 className="services-title text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-4 sm:mb-6">
             {t("services.title")}
           </h2>
           <p className="services-title text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            {t("services.subtitle")}
+            <HighlightText
+              text={t("services.subtitle")}
+              keywords={language === "es" ? ["velocidad y eficiencia"] : ["speed and efficiency"]}
+              className="italic gradient-text-grey"
+            />
           </p>
         </div>
 
-        <div className="space-y-12 sm:space-y-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
           {services.map((service, index) => (
             <div
               key={index}
-              className={`service-item flex flex-col items-center gap-8 sm:gap-12 ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
-              }`}
+              className="service-card group bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] relative overflow-hidden"
             >
-              <div className="flex-1 text-center lg:text-left">
-                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-black rounded-2xl mb-4 sm:mb-6">
-                  <service.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black mb-2 sm:mb-4">{service.title}</h3>
-                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-md mx-auto lg:mx-0">
-                  {service.description}
-                </p>
+              {/* Green accent on hover */}
+              <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-[#69f591] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-black to-gray-800 rounded-full mb-6 ring-2 ring-black/10">
+                <service.icon className="w-10 h-10 text-white" />
               </div>
-              <div className="flex-1">
-                <div className="w-full h-48 sm:h-64 bg-gray-100 rounded-2xl flex items-center justify-center">
-                  <service.icon className="w-20 h-20 sm:w-24 sm:h-24 text-gray-300" />
-                </div>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-black mb-3">{service.title}</h3>
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed">{service.description}</p>
             </div>
           ))}
         </div>
       </div>
+      <WaveDivider fillColor="fill-gray-50" /> {/* Wave divider for transition to About */}
     </section>
   )
 }

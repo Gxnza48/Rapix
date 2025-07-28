@@ -22,6 +22,9 @@ const translations = {
     "hero.subtitle": "Desarrollamos experiencias digitales de alta velocidad que impulsan tu negocio hacia el futuro.",
     "hero.cta": "Comenzar ahora",
     "hero.learn-more": "Conocer más",
+    "hero.chip-fast": "Ultra Rápido",
+    "hero.chip-growth": "Impulsa tu Crecimiento",
+    "hero.chip-secure": "Seguridad Garantizada",
 
     // Services
     "services.title": "Nuestros Servicios",
@@ -66,10 +69,36 @@ const translations = {
     "contact.reason3": "Soluciones personalizadas",
     "contact.reason4": "Soporte técnico continuo",
 
+    // Pricing (HERO 10)
+    "pricing.title": "Precios",
+    "pricing.subtitle": "Obtén tu sitio web listo para vender por solo:", // Subtitle without price
+    "pricing.current-price": "$200.000", // New key for current price
+    "pricing.regular-price": "Ar/s $300.000", // New key for regular price
+    "pricing.feature1": "Un sitio web totalmente personalizado",
+    "pricing.feature2": "Entregado en 7 días",
+    "pricing.feature3": "Guía de estrategia de ventas",
+    "pricing.feature4": "Soporte post-entrega de 7 días",
+    "pricing.cta": "Agenda una reunión y aclara tus dudas",
+
+    // FAQ (HERO 11)
+    "faq.title": "Preguntas Frecuentes",
+    "faq.q1": "¿Necesito saber cómo codificar?",
+    "faq.a1":
+      "No. Nuestros sitios web son 100% autogestionables y editables sin necesidad de conocimientos de programación.",
+    "faq.q2": "¿Funcionará si solo tengo un producto?",
+    "faq.a2":
+      "Sí. Nuestros sitios web están diseñados para adaptarse a cualquier cantidad de productos o servicios, desde uno hasta un catálogo completo.",
+    "faq.q3": "¿Puedo usarlo para vender mentorías?",
+    "faq.a3":
+      "Absolutamente. Nuestras soluciones son versátiles y pueden configurarse para vender cualquier tipo de servicio, incluyendo mentorías, cursos o consultorías.",
+    "faq.q4": "¿El sitio web es mío?",
+    "faq.a4":
+      "Sí, el sitio web es 100% tuyo. Te entregamos la propiedad total, es editable y autogestionable para que tengas control completo.",
+
     // CTA
-    "cta.title": "¿Listo para acelerar tu negocio?",
+    "cta.title": "¿Listo para acelerar tu negocio ?",
     "cta.subtitle": "Únete a las empresas que ya experimentan la velocidad de RapiX",
-    "cta.button": "Solicitar tu solución ahora",
+    "cta.button": "Contactanos por tu web ahora mismo!",
 
     // Footer
     "footer.description": "Soluciones web ultrarrápidas que impulsan tu negocio hacia el futuro digital.",
@@ -96,6 +125,9 @@ const translations = {
     "hero.subtitle": "We develop high-speed digital experiences that drive your business into the future.",
     "hero.cta": "Get Started",
     "hero.learn-more": "Learn More",
+    "hero.chip-fast": "Ultra Fast",
+    "hero.chip-growth": "Drive Your Growth",
+    "hero.chip-secure": "Guaranteed Security",
 
     // Services
     "services.title": "Our Services",
@@ -138,8 +170,33 @@ const translations = {
     "contact.reason3": "Customized solutions",
     "contact.reason4": "Continuous technical support",
 
+    // Pricing (HERO 10)
+    "pricing.title": "Pricing",
+    "pricing.subtitle": "Get your ready-to-sell website for only:", // Subtitle without price
+    "pricing.current-price": "$200 USD", // New key for current price
+    "pricing.regular-price": "$300 USD", // New key for regular price
+    "pricing.feature1": "A fully customized website",
+    "pricing.feature2": "Delivered in 7 days",
+    "pricing.feature3": "Sales strategy guidance",
+    "pricing.feature4": "7-day post-delivery support",
+    "pricing.cta": "Schedule a meeting and clear your doubts",
+
+    // FAQ (HERO 11)
+    "faq.title": "Frequently Asked Questions",
+    "faq.q1": "Do I need to know how to code?",
+    "faq.a1": "No. Our websites are 100% self-manageable and editable without any coding knowledge.",
+    "faq.q2": "Will this work if I have only one product?",
+    "faq.a2":
+      "Yes. Our websites are designed to adapt to any number of products or services, from one to a full catalog.",
+    "faq.q3": "Can I use it to sell mentorships?",
+    "faq.a3":
+      "Absolutely. Our solutions are versatile and can be configured to sell any type of service, including mentorships, courses, or consultations.",
+    "faq.q4": "Is the website mine?",
+    "faq.a4":
+      "Yes, the website is 100% yours. We hand over full ownership, it's editable and self-manageable so you have complete control.",
+
     // CTA
-    "cta.title": "Ready to accelerate your business?",
+    "cta.title": "Ready to accelerate your business ?",
     "cta.subtitle": "Join the companies already experiencing RapiX speed",
     "cta.button": "Request your solution now",
 

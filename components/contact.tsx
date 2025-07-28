@@ -4,11 +4,13 @@ import { Mail, CheckCircle, MessageCircle } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import WaveDivider from "@/components/wave-divider"
+import { HighlightText } from "./highlight-text" // Import HighlightText
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Contact() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -64,19 +66,25 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" ref={sectionRef} className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="contact" ref={sectionRef} className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white relative">
       <div className="max-w-4xl mx-auto text-center">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="contact-title text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-4 sm:mb-6">
             {t("contact.title")}
           </h2>
-          <p className="contact-title text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">{t("contact.subtitle")}</p>
+          <p className="contact-title text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            <HighlightText
+              text={t("contact.subtitle")}
+              keywords={language === "es" ? ["acelerar tu proyecto"] : ["accelerate your project"]}
+              className="italic gradient-text-grey"
+            />
+          </p>
         </div>
         <div className="grid md:grid-cols-2 gap-8 sm:gap-12">
           {contactInfo.map((info, index) => (
             <div
               key={index}
-              className="contact-content-item bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100 flex flex-col items-center justify-center"
+              className="contact-content-item bg-gray-50 p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100 flex flex-col items-center justify-center"
             >
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-black rounded-full flex items-center justify-center mb-4 sm:mb-6">
                 <info.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
@@ -117,6 +125,7 @@ export default function Contact() {
           </ul>
         </div>
       </div>
+      <WaveDivider fillColor="fill-black" /> {/* Wave divider for transition to CTA */}
     </section>
   )
 }
