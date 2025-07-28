@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { HighlightText } from "./highlight-text" // Import HighlightText
+import { HighlightText } from "./highlight-text"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -61,7 +61,7 @@ export default function CTA() {
             <HighlightText
               text={t("cta.title")}
               keywords={language === "es" ? ["acelerar tu negocio"] : ["accelerate your business"]}
-              className="italic gradient-text-grey"
+              className="italic gradient-text-supabase-green pr-0.5"
             />
           </h2>
           <p className="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">{t("cta.subtitle")}</p>

@@ -76,14 +76,14 @@ export default function Hero() {
               <HighlightText
                 text={t("hero.headline")}
                 keywords={language === "es" ? ["rápidas"] : ["motion"]}
-                className="italic gradient-text-grey"
+                className="italic gradient-text-supabase-green pr-0.5"
               />
             </h1>
             <p className="hero-subtitle text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               <HighlightText
                 text={t("hero.subtitle")}
                 keywords={language === "es" ? ["alta velocidad"] : ["high-speed"]}
-                className="italic gradient-text-grey"
+                className="italic gradient-text-supabase-green pr-0.5"
               />
             </p>
             <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

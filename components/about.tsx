@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/language-context"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import WaveDivider from "@/components/wave-divider"
-import { HighlightText } from "./highlight-text" // Import HighlightText
+import { HighlightText } from "./highlight-text"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -93,7 +93,7 @@ export default function About() {
                 <HighlightText
                   text={value.description}
                   keywords={value.keywords}
-                  className="italic gradient-text-grey"
+                  className="italic gradient-text-supabase-green pr-0.5"
                 />
               </p>
             </div>
