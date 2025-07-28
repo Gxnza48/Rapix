@@ -67,7 +67,7 @@ export default function Founders() {
       description: t("founders.bruno-desc"),
       avatar: "https://i.ibb.co/Kx6tCN1Z/afeb4218-a3e1-4ea6-a50c-a2088e9a137e-removalai-preview.png",
       instagram: "https://www.instagram.com/brunovasquezrossi/",
-      github: "https://github.com/BrunoVasquezRossi",
+      github: "https://github.com/BrunoVasquezRossi", // Added github property
       keywords: language === "es" ? ["crecimiento"] : ["growth"],
     },
   ]
