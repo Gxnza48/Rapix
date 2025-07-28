@@ -8,7 +8,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{ts,tsx}",
-    "*.{js,ts,jsx,tsx,mdx}",
+    "*.{js,ts,jsx,tsx,mdx}", // Ensure this line is present to catch root-level components
   ],
   prefix: "",
   theme: {
@@ -100,7 +100,7 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        sans: fontFamily.sans, // Reverted to default sans-serif stack
+        sans: fontFamily.sans,
       },
     },
   },
