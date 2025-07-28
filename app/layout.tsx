@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   },
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
