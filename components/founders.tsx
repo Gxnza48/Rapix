@@ -5,7 +5,7 @@ import { useLanguage } from "@/contexts/language-context"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Instagram, Github } from "lucide-react"
-import { HighlightText } from "./highlight-text" // Import HighlightText
+import { HighlightText } from "./highlight-text"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -56,7 +56,8 @@ export default function Founders() {
       name: "Gonzalo Boandeo",
       role: t("founders.gonzalo-role"),
       description: t("founders.gonzalo-desc"),
-      avatar: "/images/gonzalo-avatar.png",
+      // IMPORTANT: Please replace this with Gonzalo's actual i.ibb.co link
+      avatar: "https://i.ibb.co/hJX7gHb4/ecdf6658-7b79-421c-b6af-c09ed64421aa-removalai-preview.png",
       instagram: "https://www.instagram.com/gonza_bonadeo/",
       github: "https://github.com/Gxnza48",
       keywords: language === "es" ? ["innovación"] : ["innovation"],
@@ -65,7 +66,8 @@ export default function Founders() {
       name: "Bruno Vasquez Rossi",
       role: t("founders.bruno-role"),
       description: t("founders.bruno-desc"),
-      avatar: "/images/bruno-avatar.png",
+      // IMPORTANT: Please replace this with Bruno's actual i.ibb.co link
+      avatar: "https://i.ibb.co/Kx6tCN1Z/afeb4218-a3e1-4ea6-a50c-a2088e9a137e-removalai-preview.png",
       instagram: "https://www.instagram.com/brunovasquezrossi/",
       keywords: language === "es" ? ["crecimiento"] : ["growth"],
     },
