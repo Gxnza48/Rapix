@@ -4,14 +4,14 @@ import Lenis from "@studio-freight/lenis"
 
 export function initLenis() {
   const lenis = new Lenis({
-    duration: 1, // Slightly reduced duration for potentially snappier feel
+    duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     direction: "vertical",
     gestureDirection: "vertical",
     smooth: true,
     mouseMultiplier: 1,
-    smoothTouch: true,
-    touchMultiplier: 5, // Increased significantly for better touchpad responsiveness
+    smoothTouch: true, // Keep this for better mobile touchpad experience
+    touchMultiplier: 2,
     infinite: false,
   })
 

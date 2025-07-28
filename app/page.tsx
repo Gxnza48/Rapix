@@ -1,12 +1,12 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { LanguageProvider } from "@/contexts/language-context"
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import Services from "@/components/services"
 import About from "@/components/about"
-import Founders from "@/components/founders" // Updated import
+import Founders from "@/components/founders"
 import Contact from "@/components/contact"
 import CTA from "@/components/cta"
 import Footer from "@/components/footer"
@@ -14,9 +14,30 @@ import { initLenis } from "@/lib/lenis"
 import ScrollEffects from "@/components/scroll-effects"
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false)
+
   useEffect(() => {
-    initLenis()
-  }, [])
+    // Function to check if it's a mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768) // Tailwind's 'md' breakpoint
+    }
+
+    // Initial check
+    checkMobile()
+
+    // Add event listener for window resize
+    window.addEventListener("resize", checkMobile)
+
+    // Initialize Lenis only on mobile
+    if (isMobile) {
+      initLenis()
+    }
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+    }
+  }, [isMobile]) // Re-run effect if isMobile changes
 
   return (
     <LanguageProvider>
@@ -89,14 +110,13 @@ export default function Home() {
             ))}
           </div>
         </div>
-
-        <ScrollEffects />
+        {isMobile && <ScrollEffects />} {/* Conditionally render ScrollEffects */}
         <Header />
         <main>
           <Hero />
           <Services />
           <About />
-          <Founders /> {/* Updated component */}
+          <Founders />
           <Contact />
           <CTA />
         </main>
